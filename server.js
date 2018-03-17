@@ -15,7 +15,7 @@ bot.onText(/\/start/, (msg) => {
                 "DUST": []
                };
     
-    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),()=>{});
+    fs.writeFileSync(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),()=>{});
     
     bot.sendMessage(
         msg.from.id,
@@ -57,7 +57,7 @@ bot.on('message', (msg) => {
                 }
                 bot.sendMessage(
                           msg.chat.id,
-                          data + "\n\n" + "از طرف  "+ msg.from.first_name   ,
+                          data + "\n\n" + "از طرف  "+ msg.from.first_name  ,
                           {parse_mode : "HTML"}
                       );
          
