@@ -15,16 +15,14 @@ bot.onText(/\/start/, (msg) => {
                 "DUST": []
                };
     
-    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),(err)=>{
-        
-    });
+    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),()=>{});
     
     bot.sendMessage(
         msg.from.id,
         "لطفا  انتخاب کنید",{
         'reply_markup':BTN1GP,
     })
-    
+  
   
 });
 
@@ -32,8 +30,8 @@ bot.on('message', (msg) => {
     fs.readFile(`./data/USERS/${msg.from.username}.json` , function (err, data) {
     if (data)
     var userData = JSON.parse(data);
+    console.log(userData);
     if (msg.text == Btn1_RASM ) {
-        
         
             if( userData.RASM.length >=23){
                 
@@ -59,7 +57,7 @@ bot.on('message', (msg) => {
                 }
                 bot.sendMessage(
                           msg.chat.id,
-                          data + "\n\n" + "از طرف  "+ msg.from.first_name  ,
+                          data + "\n\n" + "از طرف  "+ msg.from.first_name   ,
                           {parse_mode : "HTML"}
                       );
          
