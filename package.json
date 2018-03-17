@@ -1,0 +1,19 @@
+{
+  "name": "tabrik97_bot",
+  "version": "0.0.1",
+  "description": "telegram tabrik bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tabrik",
+    "97",
+    "bot"
+  ],
+  "author": "ehsankhakian@hotmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
