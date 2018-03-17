@@ -61,16 +61,18 @@ bot.on('message', (msg) => {
                 
             }
             var dustArray = userData.DUST;
+          
             do{
                 var randomNumber = Math.ceil(Math.random() * 23);
-            }while(dustArray.find((dustArray)=>randomNumber===dustArray));
+            }while(dustArray.find((dustNumber)=>randomNumber===dustNumber));
             userData.DUST.push(randomNumber)
 
             fs.writeFile(`./data/USERS/${msg.from.username}.json` , JSON.stringify(userData), (err) => {
                 if (err) throw err;
             
+               
             });
-            fs.readFile(`./data/RASM/${randomNumber}.txt`, 'utf8', function (err, data) {
+            fs.readFile(`./data/DUST/${randomNumber}.txt`, 'utf8', function (err, data) {
                 if (err) {
                   
                   return;
@@ -83,6 +85,8 @@ bot.on('message', (msg) => {
          
               });
         })
+      
+      
     } 
 });
 
