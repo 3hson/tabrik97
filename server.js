@@ -29,10 +29,11 @@ bot.onText(/\/start/, (msg) => {
 });
 
 bot.on('message', (msg) => {
-
+    fs.readFile(`./data/USERS/${msg.from.username}.json` , function (err, data) {
+    if (data)
+    var userData = JSON.parse(data);
     if (msg.text == Btn1_RASM ) {
-        fs.readFile(`./data/USERS/${msg.from.username}.json` , function (err, data) {
-            var userData = JSON.parse(data);
+        
         
             if( userData.RASM.length >=23){
                 
@@ -63,14 +64,12 @@ bot.on('message', (msg) => {
                       );
          
               });
-        })
       
       
     } 
     
     if (msg.text == Btn1_DUST ) {
-        fs.readFile(`./data/USERS/${msg.from.username}.json` , function (err, data) {
-            var userData = JSON.parse(data);
+       
         
             if( userData.DUST.length >=23){
                 
@@ -101,10 +100,11 @@ bot.on('message', (msg) => {
                       );
          
               });
-        })
+        
       
       
-    } 
+    }
+ })
 });
 
 
