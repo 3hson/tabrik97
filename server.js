@@ -9,7 +9,24 @@ const Btn1_DUST = 'پیام تبریک دوستانه';
 
 const BTN1GP = {'keyboard':[[Btn1_RASM,Btn1_DUST]],'resize_keyboard':true}
 
-
+bot.onText(/\/start/, (msg) => {
+    var initData = {
+                "RASM":[],
+                "DUST": []
+               };
+    
+    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),(err)=>{
+        
+    });
+    
+    bot.sendMessage(
+        msg.from.id,
+        "لطفا  انتخاب کنید",{
+        'reply_markup':BTN1GP,
+    })
+    
+  
+});
 
 bot.on('message', (msg) => {
 
@@ -90,22 +107,5 @@ bot.on('message', (msg) => {
     } 
 });
 
-bot.onText(/\/start/, (msg) => {
-    var initData = {
-                "RASM":[],
-                "DUST": []
-               };
-    
-    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),(err)=>{
-        
-    });
-    
-    bot.sendMessage(
-        msg.from.id,
-        "لطفا  انتخاب کنید",{
-        'reply_markup':BTN1GP,
-    })
-    
-  
-});
+
 
