@@ -22,7 +22,7 @@ bot.onText(/\/start/, (msg) => {
         "لطفا  انتخاب کنید",{
         'reply_markup':BTN1GP,
     })
-  
+  return true
   
 });
 
