@@ -10,34 +10,25 @@ const Btn1_DUST = 'پیام تبریک دوستانه';
 const BTN1GP = {'keyboard':[[Btn1_RASM,Btn1_DUST]],'resize_keyboard':true};
 const _SESSION = [];
 bot.onText(/\/start/, (msg) => {
-  
-    
-    bot.sendMessage(
-        msg.from.id,
-        "لطفا  انتخاب کنید",{
-        'reply_markup':BTN1GP,
-    })
-    _SESSION[msg.from.username]='start';
-  return true
-  
-});
 
-bot.on('message', (msg) => {
-    if (_SESSION[msg.from.username]!== undefined){
-        if (_SESSION[msg.from.username] === 'start'){
-            var initData = {
+    var initData = {
                 "RASM":[],
                 "DUST": []
                };
     
-            fs.writeFileSync(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),()=>{});
-            _SESSION[msg.from.username]='done';
-        }
-    }
+    fs.writeFile(`./data/USERS/${msg.from.username}.json`, JSON.stringify(initData),()=>{
+        bot.sendMessage(
+            msg.from.id,
+            "لطفا  انتخاب کنید",{
+            'reply_markup':BTN1GP,
+        })
+        
+bot.on('message', (msg) => {
+
     fs.readFile(`./data/USERS/${msg.from.username}.json` , function (err, data) {
     if (data)
     var userData = JSON.parse(data);
-    console.log(userData);
+
     if (msg.text == Btn1_RASM ) {
         
             if( userData.RASM.length >=23){
@@ -113,5 +104,8 @@ bot.on('message', (msg) => {
  })
 });
 
-
-
+    });
+    
+  return true
+  
+});
